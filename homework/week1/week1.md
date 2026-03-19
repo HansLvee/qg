@@ -16,7 +16,7 @@ $\displaystyle\cos\theta = \frac{\vec{v} \cdot \vec{a}} {\|\vec{v}\| \cdot \|\ve
 
 ### 坐标系变换
 
-$
+$$
 \begin{align}
 &对新坐标系，设基向量 \vec{v_1}, \vec{v_2}, \vec{v_3}... \\
 &有基变换矩阵A= 
@@ -39,11 +39,11 @@ b \begin{bmatrix} 1 \\ 1 \end{bmatrix} =
 &合并：\begin{bmatrix} a+b \\ b \end{bmatrix} = \begin{bmatrix} 1 \\ 1 \end{bmatrix} \\
 &解得：\vec{v'} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}
 \end{align}
-$
+$$
 
 ### 坐标系变换缩放倍数
 
-$
+$$
 \begin{align}
 &设基变换矩阵A= 
 \begin{bmatrix}
@@ -55,11 +55,11 @@ $
 &则缩放倍数=|det A| \\
 &当detA > 0时，坐标系方向不变；否则方向反向.
 \end{align}
-$
+$$
 
 ### 矩阵行列式
 
-$
+$$
 \begin{align}
 &对于基变换矩阵，有如下性质 \\
 &detA \neq 0 \Rightarrow 坐标系合法(线性无关) \\
@@ -67,7 +67,7 @@ $
 &detA > 0 \Rightarrow 右手坐标系 \\
 &detA < 0 \Rightarrow 左手坐标系
 \end{align}
-$
+$$
 
 ## Python相关
 
