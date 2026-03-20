@@ -45,6 +45,7 @@ $$
 ### 坐标系变换缩放倍数
 
 $$
+$$
 \begin{align}
 &设过渡矩阵A= 
 \begin{bmatrix}
@@ -57,6 +58,7 @@ $$
 &当detA > 0时，坐标系方向不变；否则方向反向.
 \end{align}
 $$
+$$
 
 ### 矩阵行列式
 
@@ -68,6 +70,7 @@ $$
 &detA > 0 \Rightarrow 右手坐标系 \\
 &detA < 0 \Rightarrow 左手坐标系
 \end{align}
+$$
 $$
 
 ## Python相关
