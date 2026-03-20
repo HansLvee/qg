@@ -8,103 +8,37 @@
 
 ### 坐标轴投影长度
 
-$Proj_\vec{a}\vec{v} = \frac{\vec{v} \cdot \vec{a}} {\|\vec{a}\|}$
+$\displaystyle Proj_\vec{a}\vec{v} = \frac{\vec{v} \cdot \vec{a}} {\|\vec{a}\|}$
 
 ### 向量夹角
 
-$\cos\theta = \frac{\vec{v} \cdot \vec{a}} {\|\vec{v}\| \cdot \|\vec{a}\|}$
+$\displaystyle\cos\theta = \frac{\vec{v} \cdot \vec{a}} {\|\vec{v}\| \cdot \|\vec{a}\|}$
 
 ### 坐标系变换
 
-对新坐标系，设基向量为 $\vec{v_1}, \vec{v_2}, \vec{v_3}$。
-
-基变换矩阵为：
-
 $$
-A =
+\begin{align}
+&对新坐标系，设基向量 \vec{v_1}, \vec{v_2}, \vec{v_3}... \\
+&有基变换矩阵A= 
 \begin{bmatrix}
-\vec{v_1} & \vec{v_2} & \vec{v_3}
-\end{bmatrix}
-$$
-
-旧坐标到新坐标：
-$$
-V' = A^{-1} V
-$$
-
-新坐标到旧坐标：
-$$
-V = A V'
-$$
-
-以二维直角坐标系为例：
-
-$$
-\vec{v} =
-\begin{bmatrix}
-1 \\
-1
-\end{bmatrix}, \quad
-\vec{x} =
-\begin{bmatrix}
-1 \\
-0
-\end{bmatrix}, \quad
-\vec{y} =
-\begin{bmatrix}
-1 \\
-1
-\end{bmatrix}
-$$
-
-设新坐标为：
-
-$$
-\vec{v'} =
-\begin{bmatrix}
-a \\
-b
-\end{bmatrix}
-$$
-
-有：
-
-$$
-a
-\begin{bmatrix}
-1 \\
-0
-\end{bmatrix}
-+
-b
-\begin{bmatrix}
-1 \\
-1
-\end{bmatrix}
-=
-\begin{bmatrix}
-1 \\
-1
-\end{bmatrix}
-$$
-
-化简得：
-
-$$
-\begin{aligned}
-a + b &= 1 \\
-b &= 1
-\end{aligned}
-$$
-
-因此：
-
-$$
-\vec{v'} =
-\begin{bmatrix}
-0 \\
-1
-\end{bmatrix}
+\vec{v_1} \ 
+\vec{v_1} \
+\vec{v_1} \
+... \\
+\end{bmatrix} \\
+&旧坐标V\rightarrow 新坐标V'：  V' = A^{-1} V \\
+&新坐标V\rightarrow 旧坐标V \ ：V \ \ = AV' \\ \\
+&以二维直角坐标系为例：\\
+&对于向量：\vec{v} = \begin{bmatrix} 1 \\ 1 \end{bmatrix}，
+转移至新坐标系：\vec{x}= \begin{bmatrix} 1 \\ 0 \end{bmatrix}，
+\vec{y}= \begin{bmatrix} 1 \\ 1 \end{bmatrix} \\
+&设新坐标：\vec{v'} = \begin{bmatrix} a \\ b \end{bmatrix}，
+由变换公式可建立方程：a \begin{bmatrix} 1 \\ 0 \end{bmatrix} + 
+b \begin{bmatrix} 1 \\ 1 \end{bmatrix} =
+\begin{bmatrix} 1 \\ 1 \end{bmatrix} \\
+&合并：\begin{bmatrix} a+b \\ b \end{bmatrix} = \begin{bmatrix} 1 \\ 1 \end{bmatrix} \\
+&解得：\vec{v'} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+\end{align}
 $$
 
 ### 坐标系变换缩放倍数
