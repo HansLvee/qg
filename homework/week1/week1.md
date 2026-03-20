@@ -18,51 +18,80 @@ $\displaystyle\cos\theta = \frac{\vec{v} \cdot \vec{a}} {\|\vec{v}\| \cdot \|\ve
 
 ### 坐标系变换
 
-对新坐标系，设新基向量 $\vec{v_1}, \vec{v_2}, \vec{v_3} \cdots$，有过渡矩阵：$A=\begin{bmatrix}\vec{v_1}\ \vec{v_2}\ \vec{v_3}\ \cdots\end{bmatrix}$
+对新坐标系，设新基向量 $\vec{v_1},\vec{v_2},\vec{v_3}\cdots$，
+有过渡矩阵：
+
+$$A=\begin{bmatrix} \vec{v_1}\ \vec{v_2}\ \vec{v_3}\ \cdots \end{bmatrix}$$
+
+则：
+
 $$
+\begin{align}
 旧坐标V\quad \rightarrow 新坐标V':V' &= &A^{-1} V \\
 新坐标V'\rightarrow 旧坐标V:V  &= &AV'
+\end{align}
 $$
-以二维直角坐标系为例，对于向量：$\vec{v} = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$，转移至新坐标系：$\vec{x}= \begin{bmatrix} 1 \\ 0 \end{bmatrix}$，$\vec{y}= \begin{bmatrix} 1 \\ 1 \end{bmatrix}$，
 
-设新坐标：$\vec{v'} = \begin{bmatrix} a \\ b \end{bmatrix}$，由变换公式可建立方程：
+以二维直角坐标系为例，对于向量：
+
 $$
-a \begin{bmatrix} 1 \\ 0 \end{bmatrix} + 
-b \begin{bmatrix} 1 \\ 1 \end{bmatrix} =
-\begin{bmatrix} 1 \\ 1 \end{bmatrix}
+\vec{v} = \begin{bmatrix} 1 \\
+1 \end{bmatrix}
+$$
+
+转移至新坐标系：
+
+$$
+\vec{x}= \begin{bmatrix} 1 \\
+0 \end{bmatrix}, \
+\vec{y}= \begin{bmatrix} 1 \\
+1 \end{bmatrix}
+$$
+
+设新坐标： $\vec{v'} = [a \ b]^T$ ，由变换公式可建立方程：
+
+$$
+a \begin{bmatrix} 1 \\
+0 \end{bmatrix} + 
+b \begin{bmatrix} 1 \\
+1 \end{bmatrix} =
+\begin{bmatrix} 1 \\
+1 \end{bmatrix}
 $$
 
 合并：
+
 $$
-\begin{bmatrix} a+b \\ b \end{bmatrix} = \begin{bmatrix} 1 \\ 1 \end{bmatrix}
-$$
-解得：
-$$
-\vec{v'} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+\begin{bmatrix} a+b \\
+b \end{bmatrix} = 
+\begin{bmatrix} 1 \\
+1 \end{bmatrix}
 $$
 
+解得：
+
+$$
+\vec{v'} = \begin{bmatrix} 0 \\
+1 \end{bmatrix}
+$$
 
 ### 坐标系变换缩放倍数
 
 $$
-$$
 \begin{align}
 &设过渡矩阵A= 
 \begin{bmatrix}
-\vec{v_1} \ 
-\vec{v_1} \
-\vec{v_1} \
-... \\
+\vec{v_1} \ \vec{v_2} \ \vec{v_3} \ \cdots \\
 \end{bmatrix} \\
 &则缩放倍数=|det A| \\
 &当detA > 0时，坐标系方向不变；否则方向反向.
 \end{align}
 $$
-$$
 
 ### 矩阵行列式
 
 对于过渡矩阵，有如下性质：
+
 $$
 \begin{align}
 &detA \neq 0 \Rightarrow 坐标系合法(线性无关) \\
@@ -70,7 +99,6 @@ $$
 &detA > 0 \Rightarrow 右手坐标系 \\
 &detA < 0 \Rightarrow 左手坐标系
 \end{align}
-$$
 $$
 
 ## Python相关
@@ -175,18 +203,17 @@ $$
 
 ### 核心公式
 
-**权重公式**：$w_{ij}$ 是智能体 $i$ 邻居 $j$ 的连接权重，分母为智能体 $i$ 的总邻居数（度）.
-$$
-w_{ij}=\frac{a_{ij}}{\sum_{k=1}^{N}a_{ik}}
-$$
-- 若 $i$ 和 $j$ 不相连（$a_{ij}=0$），则 $w_{ij}=0$，不会互相影响.
-- 若 $i$ 有 $d_i$ 个邻居（$\sum_{k=1}^{N}a_{ik}=d_i$），则对每个邻居的权重都是 $\frac{1}{d_i}$，即**等权平均**.
+**权重公式** $w_{ij}$ 是智能体 $i$ 邻居 $j$ 的连接权重，分母为智能体 $i$ 的总邻居数（度）.
+
+$$w_{ij}=\frac{a_{ij}}{\sum_{k=1}^{N}a_{ik}}$$
+
+- 若 $i$ 和 $j$ 不相连（ $a_{ij}=0$ ），则 $w_{ij}=0$ ，不会互相影响.
+- 若 $i$ 有 $d_i$ 个邻居（ $\sum_{k=1}^{N}a_{ik}=d_i$ ），则对每个邻居的权重都是 $\frac{1}{d_i}$，即**等权平均**.
 - $\sum_{j=1}^{N}w_{ij}$，保证状态更新是**凸组合**，不会发散.
 
 **状态更新公式**：第 $t+1$ 轮迭代后，智能体 $i$ 的状态值为其所有邻居（包括自己）在第 $t$ 轮状态值的**加权平均值**. 
-$$
-x_i^{(t+1)}=\sum_{j=1}^{N}w_{ij}x_j^{(t)} \quad t=0,1,2,\cdots,T
-$$
+
+$$x_i^{(t+1)}=\sum_{j=1}^{N}w_{ij}x_j^{(t)} \quad t=0,1,2,\cdots,T$$
 
 ---
 
@@ -196,8 +223,8 @@ $$
 
 | 图类型 | 参数变化说明                                                 | 度矩阵 $D$ 变化    | 权重 $w_{ij}$ 变化  |
 | ------ | ------------------------------------------------------------ | ------------------ | ------------------- |
-| 有向图 | $a_{ij}\neq a_{ji}$，$a_{ij}$ 表示 $i \leftarrow j$，($j$ 是 $i$ 的入邻居) | 度定义为入度       | $w_{ij}\neq w_{ji}$ |
-| 有权图 | $a_{ij} > 0$ 表示连接权重，$a_{ij} = 0$ 表示无连接           | 度定义为入度权重和 | 加权平均            |
+| 有向图 | $a_{ij}\neq a_{ji}$， $a_{ij}$ 表示 $i\leftarrow j$，( $j$ 是 $i$ 的入邻居) | 度定义为入度       | $w_{ij}\neq w_{ji}$ |
+| 有权图 | $a_{ij} > 0$ 表示连接权重， $a_{ij} = 0$ 表示无连接           | 度定义为入度权重和 | 加权平均            |
 
 
 
@@ -206,15 +233,14 @@ $$
 令全局状态向量 $\boldsymbol{x}^{(t)} = \left[x_1^{(t)}, x_2^{(t)}, \dots, x_N^{(t)}\right]^T$，权重矩阵 $\boldsymbol{W} = [w_{ij}]_{N \times N}$.
 
 则原更新公式可写为矩阵乘法形式：
-$$
-\boldsymbol{x}^{(t+1)} = \boldsymbol{W} \boldsymbol{x}^{(t)}
-$$
+
+$$\boldsymbol{x}^{(t+1)} = \boldsymbol{W} \boldsymbol{x}^{(t)}$$
 
 进一步推导，在 $t$ 次迭代后：
-$$
-\boldsymbol{x}^{(t)} = \boldsymbol{W}^t \boldsymbol{x}^{(0)}
-$$
-其中 $x^{(0)}$ 是初始状态向量，$W^t$ 是权重矩阵的 $t$ 次幂.
+
+$$\boldsymbol{x}^{(t)} = \boldsymbol{W}^t \boldsymbol{x}^{(0)}$$
+
+其中 $x^{(0)}$ 是初始状态向量， $W^t$ 是权重矩阵的 $t$ 次幂.
 
 
 
@@ -223,14 +249,13 @@ $$
 #### 一致值
 
 在**无向无权连通图/无向有权连通图**，智能体状态最终收敛于初始状态的**算数平均值**：
-$$
-x^*=\lim_{t \to \infty} x_i^{(t)} = \frac{1}{N} \sum_{i=1}^N x_i^{(0)}
-$$
+
+$$x^*=\lim_{t \to \infty} x_i^{(t)} = \frac{1}{N} \sum_{i=1}^N x_i^{(0)}$$
 
 在**有向强连通图**，智能体状态最终收敛于**初始状态的加权平均值**：
-$$
-x^*=\lim_{t \to \infty} x_i^{(t)} = \sum_{i=1}^N \pi_i x_i^{(0)}
-$$
+
+$$x^*=\lim_{t \to \infty} x_i^{(t)} = \sum_{i=1}^N \pi_i x_i^{(0)}$$
+
 在**不连通图/有孤立节点**：孤立节点永远保持初始值，其他节点在各自连通子图内收敛
 
 #### 收敛性影响因素
@@ -253,5 +278,5 @@ $$
 | 核心矩阵 | 行随机矩阵 $W=D^{-1}x^{(t)}$                                 | 拉普拉斯矩阵 $\boldsymbol{L} = \boldsymbol{D} - \boldsymbol{A}$ |
 | 收敛特性 | 指数收敛，收敛速度由 $W$ 的次大特征值模长决定                | 指数收敛，收敛速度由 $L$ 的最小非零特征值决定                |
 | 应用场景 | 适合数字系统、周期性通信                                     | 适合模拟系统、连续感知与控制                                 |
-| 联系     | 离散时间可视为连续时间的欧拉离散化：$W=I−\tau L$             |                                                              |
+| 联系     | 离散时间可视为连续时间的欧拉离散化： $W=I−\tau L$             |                                                              |
 
