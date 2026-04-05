@@ -1,3 +1,12 @@
+"""
+对 QG_train.csv 和 QG_test.csv 的模型训练
+使用线性模型和 L2 正则
+
+测试数据维度高、样本量小，且带有二十列常数特征
+发现线性模型过拟合稍强，
+可测试小样本学习法的泛化
+"""
+
 import pandas as pd
 import numpy as np
 
